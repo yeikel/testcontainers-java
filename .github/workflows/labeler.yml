@@ -8,6 +8,10 @@ jobs:
       contents: read
       pull-requests: write
     runs-on: ubuntu-latest
+    # Skip when triggered by pull request events on PR's from forks because the GITHUB_TOKEN on
+    # those PR's does not have write access, and thus cannot run the labeler.
+    # Running this workflow against PR's from forks requires manually triggering it via `workflow_dispatch`.
+    if: ${{ !github.event.pull_request.head.repo.fork }}
     steps:
     - uses: actions/labeler@v5
       with:
