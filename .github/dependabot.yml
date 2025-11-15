@@ -8,4 +8,5 @@ registries:
 updates:
   - package-ecosystem: "gradle"
     directory: "/"
-    
+  - package-ecosystem: "gradle"
+    directory: "/core"
